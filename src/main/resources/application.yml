@@ -1,0 +1,11 @@
+spring:
+  liquibase:
+    change-log: 'classpath:db/dbchanges.xml'
+  datasource:
+    url: 'jdbc:mysql://DbMysql:3306/recipeApp?createDatabaseIfNotExist=true'
+    username: root
+    password: root
+    jpa:
+      database-platform: org.hibernate.dialect.MySQL8Dialect
+      jackson:
+        default-property-inclusion: non_null
