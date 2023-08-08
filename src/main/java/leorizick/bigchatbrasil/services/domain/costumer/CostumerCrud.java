@@ -22,9 +22,13 @@ public class CostumerCrud {
         return costumerRepository.findById(id).orElseThrow(() -> new NotFoundException("Costumer not found" + id));
     }
 
+    @Transactional
     public void delete(Long id){
         Costumer costumer = findById(id);
         costumer.setEnabled(false);
+        //Por padrão o hibernate ja faz um save da entidade alterada ao fazer um findById, porem prefiro deixar explicito no codigo
         costumerRepository.save(costumer);
     }
+
+
 }

@@ -8,7 +8,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.Where;
+
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -20,7 +24,6 @@ public class Costumer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-
     private String telephone;
     private String cpf;
     private String cnpj;
@@ -28,6 +31,13 @@ public class Costumer {
     private TypePlan type;
     private Double balance;
     private Double limit;
+    private Double usedLimit;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 
     @Where(clause = "enabled = true")
     private boolean enabled;

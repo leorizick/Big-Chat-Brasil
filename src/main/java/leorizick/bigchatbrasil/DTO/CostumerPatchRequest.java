@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CostumerCreationRequest {
+public class CostumerPatchRequest {
 
     private String name;
     private String telephone;

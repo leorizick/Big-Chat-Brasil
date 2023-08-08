@@ -21,4 +21,5 @@ public class CostumerResponse {
     private TypePlan type;
     private Double balance;
     private Double limit;
+    private Double usedLimit;
 }

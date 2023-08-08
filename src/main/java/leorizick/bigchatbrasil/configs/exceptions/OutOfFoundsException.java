@@ -2,13 +2,13 @@ package leorizick.bigchatbrasil.configs.exceptions;
 
 import org.springframework.http.HttpStatus;
 
-public class OutOfCreditsException extends RestException {
+public class OutOfFoundsException extends RestException {
 
-    public OutOfCreditsException(String title, String description) {
+    public OutOfFoundsException(String title, String description) {
         super(HttpStatus.FORBIDDEN, title, description);
     }
 
-    public OutOfCreditsException(String title) {
+    public OutOfFoundsException(String title) {
         super(HttpStatus.FORBIDDEN, title);
     }
 }

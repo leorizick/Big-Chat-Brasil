@@ -1,5 +1,6 @@
 package leorizick.bigchatbrasil.services.api.message;
 
+import jakarta.transaction.Transactional;
 import leorizick.bigchatbrasil.DTO.MessageCreationRequest;
 import leorizick.bigchatbrasil.DTO.MessageResponse;
 import leorizick.bigchatbrasil.entities.message.Message;
@@ -15,6 +16,7 @@ public class MessageApiService {
     private MessageCrud messageCrud;
     private ModelMapper modelMapper;
 
+    @Transactional
     public MessageResponse sendMessage(Long senderId, Long receiverId, MessageCreationRequest messageCreationRequest){
         Message message = modelMapper.map(messageCreationRequest, Message.class);
         message = messageCrud.sendMessage(senderId, receiverId, message);

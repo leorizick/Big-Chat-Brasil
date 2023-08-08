@@ -31,6 +31,7 @@ public class CostumerResponseMapper {
                             .cpf(src.getCpf())
                             .telephone(src.getTelephone())
                             .limit(src.getLimit())
+                            .usedLimit(src.getUsedLimit())
                             .build();
                 });
     }
