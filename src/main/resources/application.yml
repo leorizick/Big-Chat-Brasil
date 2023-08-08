@@ -1,11 +1,9 @@
 spring:
-  liquibase:
-    change-log: 'classpath:db/dbchanges.xml'
   datasource:
-    url: 'jdbc:mysql://DbMysql:3306/recipeApp?createDatabaseIfNotExist=true'
+    url: jdbc:postgresql://localhost:5432/BCB
     username: root
     password: root
-    jpa:
-      database-platform: org.hibernate.dialect.MySQL8Dialect
-      jackson:
-        default-property-inclusion: non_null
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
