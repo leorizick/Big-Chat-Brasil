@@ -1,13 +1,13 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/BCB
+    url: 'jdbc:postgresql://localhost:6543/BCB?createDatabaseIfNotExist=true'
     username: root
     password: root
     driver-class-name: org.postgresql.Driver
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-liquibase:
-  change-log: classpath:/db/changelog/changelog-master.xml
+    jpa:
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    change-log: 'classpath:db/dbchanges.xml'
 bigchatbrasil:
   message:
     cost: 0.25

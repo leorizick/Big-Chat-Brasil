@@ -1,5 +1,6 @@
 package leorizick.bigchatbrasil.services.domain.mapping;
 
+import leorizick.bigchatbrasil.DTO.CostumerResponse;
 import leorizick.bigchatbrasil.DTO.MessageResponse;
 import leorizick.bigchatbrasil.entities.message.Message;
 import jakarta.annotation.PostConstruct;
@@ -29,6 +30,8 @@ public class MessageResponseMapper {
                             .message(src.getMessage())
                             .tell(src.getTell())
                             .cost(src.getCost())
+                            .sender(modelMapper.map(src.getSender(), CostumerResponse.class))
+                            .receiver(modelMapper.map(src.getReceiver(), CostumerResponse.class))
                             .build();
                 });
     }

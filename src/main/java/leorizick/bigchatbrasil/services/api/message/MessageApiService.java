@@ -7,19 +7,19 @@ import leorizick.bigchatbrasil.entities.message.Message;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import leorizick.bigchatbrasil.services.domain.message.MessageCrud;
+import leorizick.bigchatbrasil.services.domain.message.MessageSender;
 
 @Service
 @RequiredArgsConstructor
 public class MessageApiService {
 
-    private MessageCrud messageCrud;
-    private ModelMapper modelMapper;
+    private final MessageSender messageSender;
+    private final ModelMapper modelMapper;
 
     @Transactional
-    public MessageResponse sendMessage(Long senderId, Long receiverId, MessageCreationRequest messageCreationRequest){
+    public MessageResponse sendMessage(MessageCreationRequest messageCreationRequest){
         Message message = modelMapper.map(messageCreationRequest, Message.class);
-        message = messageCrud.sendMessage(senderId, receiverId, message);
+        message = messageSender.sendMessage(message);
         return modelMapper.map(message, MessageResponse.class);
     }
 }

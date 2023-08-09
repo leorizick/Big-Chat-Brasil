@@ -25,12 +25,14 @@ public class CostumerResponseMapper {
 
                     return CostumerResponse.builder()
                             .id(src.getId())
+                            .name(src.getName())
                             .balance(src.getBalance())
                             .cnpj(src.getCnpj())
                             .companyName(src.getCompanyName())
+                            .type(src.getType())
                             .cpf(src.getCpf())
                             .telephone(src.getTelephone())
-                            .limit(src.getLimit())
+                            .limit(src.getAvaiableLimit())
                             .usedLimit(src.getUsedLimit())
                             .build();
                 });

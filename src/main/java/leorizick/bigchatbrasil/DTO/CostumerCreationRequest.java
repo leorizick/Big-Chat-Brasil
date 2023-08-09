@@ -19,6 +19,6 @@ public class CostumerCreationRequest {
     private String companyName;
     private TypePlan type;
     private Double balance;
-    private Double limit;
+    private Double avaiableLimit;
 
 }

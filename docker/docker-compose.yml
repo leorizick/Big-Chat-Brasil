@@ -1,12 +1,31 @@
 version: '3.1'
 
 services:
-  postgres:
-    image: postgres:latest
-    container_name: meu-postgres
+
+  db:
+    image: postgres
+    container_name: DbPostgres
     environment:
       POSTGRES_DB: BCB
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
     ports:
-      - "5432:5432"
+      - 6543:5432
+
+   app:
+    image: adoptopenjdk:17-jre
+     volumes:
+      - ./BigChatBrasil.jar:/app/app.jar
+    command: ["java", "-jar", "/app/app.jar"]
+    container_name: BCBApi
+    networks:
+      - compose-bridge
+    ports:
+      - 8080:8080 
+    depends_on:
+      - db 
+    restart: on-failure
+   
+networks:
+  compose-bridge:
+    driver: bridge    

@@ -1,12 +1,13 @@
 package leorizick.bigchatbrasil.entities.message;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToOne;
 import leorizick.bigchatbrasil.entities.costumer.Costumer;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +15,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
@@ -21,7 +23,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Message {
+public class Message implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,11 +33,11 @@ public class Message {
     private String message;
     private double cost;
 
-    @OneToOne(mappedBy = "message")
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "sender_id")
     private Costumer sender;
 
-    @OneToOne(mappedBy = "message")
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "receiver_id")
     private Costumer receiver;
 

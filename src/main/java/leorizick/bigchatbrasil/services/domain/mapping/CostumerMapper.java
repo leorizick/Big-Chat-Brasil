@@ -29,13 +29,16 @@ public class CostumerMapper {
                     if (costumer == null) {
                         costumer = new Costumer();
                         costumer.setEnabled(true);
+                        costumer.setUsedLimit(0.0);
                     }
+                    costumer.setName(src.getName());
+                    costumer.setType(src.getType());
                     costumer.setBalance(src.getBalance());
                     costumer.setCnpj(src.getCnpj());
                     costumer.setCpf(src.getCpf());
                     costumer.setCompanyName(src.getCompanyName());
                     costumer.setTelephone(src.getTelephone());
-                    costumer.setLimit(src.getLimit());
+                    costumer.setAvaiableLimit(src.getAvaiableLimit());
                     return costumer;
 
                 });
@@ -49,23 +52,29 @@ public class CostumerMapper {
 
                     costumer.setEnabled(true);
 
-                    if(src.getBalance() != null){
+                    if(src.getName() != null){
+                        costumer.setName(src.getName());
+                    }
+                    if(src.getType() != null){
+                        costumer.setType(src.getType());
+                    }
+                    if (src.getBalance() != null) {
                         costumer.setBalance(src.getBalance());
                     }
-                    if(src.getCnpj() != null){
+                    if (src.getCnpj() != null) {
                         costumer.setCnpj(src.getCnpj());
                     }
-                    if(src.getCpf() != null){
+                    if (src.getCpf() != null) {
                         costumer.setCpf(src.getCpf());
                     }
-                    if(src.getCompanyName() != null){
+                    if (src.getCompanyName() != null) {
                         costumer.setCompanyName(src.getCompanyName());
                     }
-                    if(src.getTelephone() != null){
+                    if (src.getTelephone() != null) {
                         costumer.setTelephone(src.getTelephone());
                     }
-                    if(src.getLimit() != null){
-                        costumer.setLimit(src.getLimit());
+                    if (src.getAvaiableLimit() != null) {
+                        costumer.setAvaiableLimit(src.getAvaiableLimit());
                     }
                     return costumer;
 

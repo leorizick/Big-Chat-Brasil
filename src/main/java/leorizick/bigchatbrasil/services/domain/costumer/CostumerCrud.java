@@ -4,6 +4,8 @@ import jakarta.transaction.Transactional;
 import leorizick.bigchatbrasil.entities.costumer.Costumer;
 import leorizick.bigchatbrasil.configs.exceptions.NotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import leorizick.bigchatbrasil.repositories.CostumerRepository;
 
@@ -19,8 +21,13 @@ public class CostumerCrud {
     }
 
     public Costumer findById(Long id){
-        return costumerRepository.findById(id).orElseThrow(() -> new NotFoundException("Costumer not found" + id));
+        return costumerRepository.findById(id).orElseThrow(() -> new NotFoundException("Costumer not found. Id: " + id));
     }
+
+    public Page<Costumer> findAll(Pageable pageable) {
+        return costumerRepository.findAll(pageable);
+    }
+
 
     @Transactional
     public void delete(Long id){

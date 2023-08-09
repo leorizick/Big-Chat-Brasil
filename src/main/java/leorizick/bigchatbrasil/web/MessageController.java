@@ -15,11 +15,12 @@ import leorizick.bigchatbrasil.services.api.message.MessageApiService;
 @RequiredArgsConstructor
 public class MessageController {
 
-    private MessageApiService messageApiService;
+    private final
+    MessageApiService messageApiService;
 
-    @PostMapping(value = "/api/message/{senderId}/{receiverId}")
-    public ResponseEntity<MessageResponse> sendMessage(@RequestBody MessageCreationRequest message, @PathVariable Long senderId, Long receiverId){
-        MessageResponse messageResponse = messageApiService.sendMessage(senderId, receiverId, message);
+    @PostMapping(value = "/api/message")
+    public ResponseEntity<MessageResponse> sendMessage(@RequestBody MessageCreationRequest message){
+        MessageResponse messageResponse = messageApiService.sendMessage(message);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(messageResponse);

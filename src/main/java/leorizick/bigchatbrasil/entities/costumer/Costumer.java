@@ -12,6 +12,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.Where;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
@@ -19,7 +20,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Costumer {
+public class Costumer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,7 +31,7 @@ public class Costumer {
     private String companyName;
     private TypePlan type;
     private Double balance;
-    private Double limit;
+    private Double avaiableLimit;
     private Double usedLimit;
 
     @CreationTimestamp

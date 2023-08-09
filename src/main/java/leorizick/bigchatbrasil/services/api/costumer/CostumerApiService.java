@@ -7,6 +7,8 @@ import leorizick.bigchatbrasil.entities.costumer.Costumer;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import leorizick.bigchatbrasil.services.domain.costumer.CostumerCrud;
 
@@ -21,6 +23,11 @@ public class CostumerApiService {
     public CostumerResponse findById(Long id){
         Costumer costumer = costumerCrud.findById(id);
         return modelMapper.map(costumer, CostumerResponse.class);
+    }
+
+    public Page<CostumerResponse> findAll(Pageable pageable) {
+        Page<Costumer> recipePage = costumerCrud.findAll(pageable);
+        return recipePage.map(costumer -> modelMapper.map(costumer, CostumerResponse.class));
     }
 
     @Transactional

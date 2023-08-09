@@ -4,6 +4,8 @@ import leorizick.bigchatbrasil.DTO.CostumerCreationRequest;
 import leorizick.bigchatbrasil.DTO.CostumerPatchRequest;
 import leorizick.bigchatbrasil.DTO.CostumerResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,6 +30,15 @@ public class CostumerController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(costumerResponse);
+    }
+
+    @GetMapping(value = "/api/costumers")
+    public ResponseEntity<Page<CostumerResponse>> findAll(Pageable pageable) {
+        Page<CostumerResponse> recipePage = costumerApiService.findAll(pageable);
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(recipePage);
     }
 
     @PostMapping(value = "/api/costumer")
