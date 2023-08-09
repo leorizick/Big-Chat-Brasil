@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: 'jdbc:postgresql://localhost:6543/BCB?createDatabaseIfNotExist=true'
+    url: 'jdbc:postgresql://db:5432/BCB?createDatabaseIfNotExist=true'
     username: root
     password: root
     driver-class-name: org.postgresql.Driver
